@@ -1,3 +1,4 @@
 .idea
 auto_video_env
 constants.py
+__pycache__/
