@@ -52,7 +52,7 @@ def scrape_reddit():
             word_count = len(comment.body.split())
             if 25 <= word_count <= 100:
                 cleaned_comment = clean_text(comment.body)
-                filtered_comments.append(cleaned_comment)
+                filtered_comments.append({comment.id: cleaned_comment})
 
         result = {
             submission.id: {
