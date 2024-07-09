@@ -2,3 +2,5 @@
 auto_video_env
 constants.py
 __pycache__/
+Screenshots/Answers/*.png
+Screenshots/Questions/*.png
