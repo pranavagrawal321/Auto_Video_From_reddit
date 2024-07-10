@@ -4,3 +4,4 @@ constants.py
 __pycache__/
 Screenshots/Answers/*.png
 Screenshots/Questions/*.png
+videos/*.mp4
