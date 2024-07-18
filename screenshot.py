@@ -3,9 +3,9 @@ from selenium.webdriver.common.by import By
 from PIL import Image, ImageOps
 from io import BytesIO
 import os
+from constants import *
 import time
 
-# Create directories if they don't exist
 screenshot_dir = "Screenshots"
 question_dir = os.path.join(screenshot_dir, "Questions")
 answer_dir = os.path.join(screenshot_dir, "Answers")
@@ -107,7 +107,7 @@ def screenshot_reddit_comment(post_id, comment_id, spacing_height=20):
 
 
 if __name__ == '__main__':
-    subreddit_name = 'AskReddit'
+    subreddit_name = SUBREDDIT
     question_id = '1dykbi7'
     comment_id = 'lc9isze'
 

@@ -1,0 +1,7 @@
+praw==7.7.1
+bs4==0.0.2
+selenium==4.22.0
+pyttsx3==2.90
+Markdown==3.6
+pillow==10.4.0
+pyt2s==0.0.4

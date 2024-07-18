@@ -1,36 +1,21 @@
-import pyttsx3
+from pyt2s.services import stream_elements
 import os
 
-voiceoverDir = "Voiceovers"
+screenshot_dir = "Voiceovers"
+question_dir = os.path.join(screenshot_dir, "Questions")
+answer_dir = os.path.join(screenshot_dir, "Answers")
+os.makedirs(question_dir, exist_ok=True)
+os.makedirs(answer_dir, exist_ok=True)
 
 
-def create_voice_over(fileName, text, voice=None, rate=None, volume=None):
-    try:
-        os.makedirs(voiceoverDir, exist_ok=True)
+def create_voiceover(text, filename):
+    data = stream_elements.requestTTS(text, stream_elements.Voice.Russell.value)
 
-        filePath = os.path.join(voiceoverDir, f"{fileName}.mp3")
+    with open(f"Voiceovers/{filename}.mp3", '+wb') as file:
+        file.write(data)
 
-        engine = pyttsx3.init()
-
-        if voice:
-            voices = engine.getProperty('voices')
-            engine.setProperty('voice', voices[voice].id)
-
-        if rate:
-            engine.setProperty('rate', rate)
-
-        if volume:
-            engine.setProperty('volume', volume)
-
-        engine.save_to_file(text, filePath)
-        engine.runAndWait()
-
-        return filePath
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
+    print(f"Voice saved to Voiceovers/{filename}.mp3")
 
 
 if __name__ == '__main__':
-    create_voice_over('test_custom', 'This is a custom voiceover', voice=1, rate=150, volume=0.9)
+    create_voiceover("Hey this is a test voiceover", 'test')

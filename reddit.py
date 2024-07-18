@@ -6,20 +6,8 @@ from bs4 import BeautifulSoup
 import os
 import warnings
 from markdown import markdown
+from text.cleaners import english_cleaners
 warnings.filterwarnings("ignore")
-
-
-def clean_text(markdown_string):
-    html = markdown(markdown_string)
-    html = re.sub(r'<pre>(.*?)</pre>', ' ', html)
-    html = re.sub(r'<code>(.*?)</code >', ' ', html)
-    html = re.sub(r'~~(.*?)~~', ' ', html)
-
-    # extract text
-    soup = BeautifulSoup(html, "html.parser")
-    text = ''.join(soup.findAll(text=True))
-
-    return text
 
 
 def reddit_obj():
@@ -51,12 +39,12 @@ def scrape_reddit():
         for comment in all_comments:
             word_count = len(comment.body.split())
             if 25 <= word_count <= 100:
-                cleaned_comment = clean_text(comment.body)
+                cleaned_comment = english_cleaners(comment.body)
                 filtered_comments.append({comment.id: cleaned_comment})
 
         result = {
             submission.id: {
-                'title': clean_text(submission.title),
+                'title': english_cleaners(submission.title),
                 'comments': filtered_comments[:2]
             }
         }
