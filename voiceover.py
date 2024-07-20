@@ -1,9 +1,11 @@
 from pyt2s.services import stream_elements
 import os
+import logging
+import utils
 
-screenshot_dir = "Voiceovers"
-question_dir = os.path.join(screenshot_dir, "Questions")
-answer_dir = os.path.join(screenshot_dir, "Answers")
+voiceover_dir = "Voiceovers"
+question_dir = os.path.join(voiceover_dir, "Questions")
+answer_dir = os.path.join(voiceover_dir, "Answers")
 os.makedirs(question_dir, exist_ok=True)
 os.makedirs(answer_dir, exist_ok=True)
 
