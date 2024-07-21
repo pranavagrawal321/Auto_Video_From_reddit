@@ -1,7 +1,6 @@
 from pyt2s.services import stream_elements
 import os
 import logging
-import utils
 
 voiceover_dir = "Voiceovers"
 question_dir = os.path.join(voiceover_dir, "Questions")
